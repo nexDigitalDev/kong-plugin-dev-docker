@@ -1,0 +1,61 @@
+# Verison 3.5 enables the use of the `name` property for the Networks definition.
+version: '3.5'
+
+# Simple bridge network definition.
+networks: 
+  kong-net:
+    name: kong-net
+    driver: bridge
+
+services:
+  # Database container for PostgreSQL.
+  kong-database:
+    image: postgres:latest
+    container_name: kong-database
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=kong
+      - POSTGRES_DB=kong
+    networks:
+      - kong-net
+
+  # Temporary container that uses Kong image to bootstrap the Database.
+  kong-bootstrap:
+    image: kong:latest
+    container_name: kong-bootstrap
+    # Bootstraping command.
+    command: kong migrations bootstrap
+    # Only restart on-failure, container restarts until the task is done once.
+    restart: on-failure
+    environment:
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=kong-database
+    networks:
+      - kong-net
+    # This waits for each container in the list to start before this one.
+    depends_on:
+      - kong-database
+
+  # Kong container
+  kong-compose:
+    image: kong:latest
+    container_name: kong-compose
+    restart: always
+    ports:
+      - 8000:8000
+      - 8001:8001
+    environment:
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=kong-database
+      - KONG_PLUGINS=bundled
+      # Opens Kong administration ports
+      - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
+    depends_on:
+      - kong-bootstrap
+    networks:
+      - kong-net
+    # Volumes are folders mounted inside the container
+    # - [/path/on/host]:[/path/inside/container]
+    volumes:
+      - ../kong-plugin:/kong-plugin/
