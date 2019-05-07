@@ -1,1 +1,3 @@
 kong-plugin/
+kong.conf
+deployment/kong.conf
