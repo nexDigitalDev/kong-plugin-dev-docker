@@ -1,18 +1,18 @@
-PLUGIN_NAME = myplugin
-PLUGIN_VERSION = 0.1.0-1
-PLUGIN_HOST_PATH = /home/julien/Project/kong-docker/kong-plugin
+PLUGIN_NAME			= myplugin
+PLUGIN_VERSION 		= 0.1.0-1
+PLUGIN_HOST_PATH	= /home/julien/Project/kong-docker/kong-plugin
 
-INSTALL = ./deployment/install.sh
-PACKAGE = ./deployment/compile.sh
-COMPOSE = ./deployment/docker-compose.yml
-TEMP_FILES = ./deployment/kong.conf
+INSTALL				= ./deployment/install.sh
+PACKAGE				= ./deployment/compile.sh
+COMPOSE				= ./deployment/docker-compose.yml
+TEMP_FILES			= ./deployment/kong.conf
 
-COM_COLOR   = \033[0;34m
-OBJ_COLOR   = \033[0;36m
-OK_COLOR    = \033[0;32m
-ERROR_COLOR = \033[0;31m
-WARN_COLOR  = \033[0;33m
-NO_COLOR    = \033[m
+COM_COLOR   		= \033[0;34m
+OBJ_COLOR   		= \033[0;36m
+OK_COLOR    		= \033[0;32m
+ERROR_COLOR 		= \033[0;31m
+WARN_COLOR  		= \033[0;33m
+NO_COLOR    		= \033[m
 
 deploy:
 		@printf "%b" "\n$(OBJ_COLOR)Deploy Kong:\n\n$(NO_COLOR)"
