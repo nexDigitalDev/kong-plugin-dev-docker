@@ -2,7 +2,8 @@
 
 Docker based development environment for Kong Plugins.
 
-![kong](https://2tjosk2rxzc21medji3nfn1g-wpengine.netdna-ssl.com/wp-content/uploads/2018/08/logo-color.png "Image Kong") ![docker](https://www.docker.com/sites/default/files/social/docker_facebook_share.png)
+![kong](https://2tjosk2rxzc21medji3nfn1g-wpengine.netdna-ssl.com/wp-content/uploads/2018/08/logo-color.png "Image Kong")
+
 ## Prerequisites
 
 For this project you will need to have **Docker**, **Docker-Compose** and **Make** installed.
@@ -16,7 +17,7 @@ Docker-Compose installation instructions can be found [here.](https://docs.docke
 
 
 #### Make
-e
+
 Make is part of the `build-essential` package. On a linux distribution you 
 can install it with the following commands:
 ```bash
