@@ -25,6 +25,21 @@ sudo apt-get install -y build-essential;
 
 ## Folder structure and Plugin location
 
+To use this repository you will need to set it up.
+
+### Set the variables in the Makefile  
+
+```bash
+PLUGIN_NAME		= [Plugin Name]   
+PLUGIN_VERSION 		= [Plugin Version]  
+PLUGIN_HOST_PATH	= /home/[user]/path/to/[Kong Plugin Repository]  
+```
+PLUGIN_NAME will define the name of your plugin in Kong once installed.  
+PLUGIN_VERSION will be used on the LuaRocks files for installation and packaging.  
+PLUGIN_HOST_PATH should be an absolute path to the Kong-Plugin directory you want to deploy
+
+> I recommend you put your Kong Plugin Repository inside the kong-docker repository
+
 ## Usage
 
 The recommended enterypoint for every command is the Makefile.  
@@ -35,10 +50,10 @@ Each call can be made using a command like follow: `make [something]`
 - `deploy`: deploys a complete Kong environment over Docker.
 - `package`: packages the plugin in a temporary Kong instance.
 - `install`: update configuration files, and installs the plugin.  
-    > This command induce a restart of the Kong instance
+This command induces a restart of the Kong instance
 - `clean`: removes any temporary files created during installation.
 - `fclean`: `clean` + stops and removes ***all*** the docker containers.  
-    > If you are using Docker for other project, it's heavily recommended that you use namespaces to secure your running containers from this command.
+If you are using Docker for other project, it's heavily recommended that you use namespaces to secure your running containers from this command.
 - `all`: `deploy` + `package` + `install` + `clean`
 - `re`: `fclean` + `all`
 
@@ -46,6 +61,7 @@ Each call can be made using a command like follow: `make [something]`
 
 As described each command has a specific task, except for the `all` and `re` command who are respectively used to execute every command, or remove everything that was done by the makefile and re-doing it.
 
-> Each time you want to test your plugin inside a Kong environement you should run `make all`.  
+Each time you want to test your plugin inside a Kong environement you should run `make all`.  
 > It will redo the `deploy` part of the execution. But docker-compose will only update the actual environment, doing nothing if nothing changed.  
-> If you need a clean environment you should call `make re` who will erase all Docker container and re-deploy everything for you.
+
+If you need a clean environment you should call `make re` who will erase all Docker container and re-deploy everything for you.
