@@ -23,7 +23,7 @@ deploy:
 			printf "%b" "\n$(OK_COLOR)Kong deployed successfully$(NO_COLOR)\n"; \
 		fi;
 
-package: $(PACKAGE)
+package:
 		 @printf "%b" "\n$(OBJ_COLOR)Package Plugin:\n\n$(NO_COLOR)"
 		 @sh $(PACKAGE) $(PLUGIN_HOST_PATH) $(PLUGIN_NAME) $(PLUGIN_VERSION) ; RESULT=$$?; \
 		 if [ $$RESULT -ne 0 ]; then \
@@ -32,7 +32,7 @@ package: $(PACKAGE)
 			printf "%b" "\n$(OK_COLOR)Plugin packaged successfully$(NO_COLOR)\n"; \
 		 fi;
 
-install: $(INSTALL)
+install:
 		 @printf "%b" "\n$(OBJ_COLOR)Install Plugin:\n\n$(NO_COLOR)"
 		 @sh $(INSTALL) $(TEMP_FILES) $(PLUGIN_NAME) ; RESULT=$$?; \
 		 if [ $$RESULT -ne 0 ]; then \
