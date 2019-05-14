@@ -27,6 +27,18 @@ sudo apt-get install -y build-essential;
 
 ## Folder structure and Plugin location
 
+Start by cloning this reporitory, go inside it and clone the recommended kong-plugin folder.
+
+```bash
+git clone https://github.com/nexDigitalDev/kong-plugin-dev-docker
+cd kong-plugin-dev-docker
+git clone https://github.com/Kong/kong-plugin
+```
+
+If you want to use your own plugin folder keep in mind that your minimal directory tree should look like follow:
+
+![tree](https://i.imgur.com/VW8Zvmp.png?1 "Image Tree")
+
 To use this repository you will need to set it up.
 
 ### Set the variables in the Makefile  
@@ -40,7 +52,12 @@ PLUGIN_NAME will define the name of your plugin in Kong once installed.
 PLUGIN_VERSION will be used on the LuaRocks files for installation and packaging.  
 PLUGIN_HOST_PATH should be an absolute path to the Kong-Plugin directory you want to deploy
 
-> I recommend you put your Kong Plugin Repository inside the kong-docker repository
+> It is recommended you put your Kong Plugin Repository inside the kong-docker repository.
+
+### Name the Plugin
+
+If you wish to change your plugin name, please refer to the Kong-Plugin reporitory on how to handle it.  
+Remember to update the fields defined inside the Makefile.
 
 ## Usage
 
