@@ -52,7 +52,7 @@ PLUGIN_NAME will define the name of your plugin in Kong once installed.
 PLUGIN_VERSION will be used on the LuaRocks files for installation and packaging.  
 PLUGIN_HOST_PATH should be an absolute path to the Kong-Plugin directory you want to deploy
 
-> It is recommended you put your Kong Plugin Repository inside the kong-docker repository.
+> It is recommended you put your Kong Plugin Repository inside the kong-plugin-dev-docker repository.
 
 ### Name the Plugin
 
